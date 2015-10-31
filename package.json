@@ -1,0 +1,32 @@
+{
+  "name": "chartist-example",
+  "version": "1.0.0",
+  "description": "Project that uses Chartist to visualize data from a web-service.",
+  "scripts": {
+    "build": "./node_modules/.bin/gulp build --production",
+    "start": "./node_modules/.bin/gulp start"
+  },
+  "keywords": [
+    "babel",
+    "gulp",
+    "webpack"
+  ],
+  "author": "Daniel Walker",
+  "license": "ISC",
+  "devDependencies": {
+    "babel-core": "^6.0.14",
+    "babel-loader": "^6.0.0",
+    "babel-preset-es2015": "^6.0.14",
+    "css-loader": "^0.21.0",
+    "del": "^2.0.2",
+    "gulp": "^3.9.0",
+    "gulp-util": "^3.0.7",
+    "style-loader": "^0.13.0",
+    "webpack": "^1.12.2",
+    "webpack-dev-server": "^1.12.1"
+  },
+  "dependencies": {
+    "chartist": "^0.9.4",
+    "whatwg-fetch": "^0.10.0"
+  }
+}
