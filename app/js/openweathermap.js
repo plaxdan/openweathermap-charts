@@ -6,15 +6,23 @@ const {
 const API = {
 
   /**
-   * Fetches the 5-day forcast for the given city.
+   * Fetches the forcast for the given city.
+   *
+   * cityName: the name of the city to return forecast data for.
+   * options:
+   *  units: weather units - defaults to 'metric'
+   *  count: number of days to fetch - defaults to 5
+   *
+   * returns: A Promise that resolves with JSON forecast data.
    */
-  dailyForecast: function(cityName, {units = 'metric', cnt = 7} = {}) {
-    return fetch(`${URL_DAILY_FORECAST}${cityName}&units=${units}&cnt=${cnt}&appid=${API_KEY}`)
+  dailyForecast: function(cityName, {units = 'metric', count = 5} = {}) {
+    const url = `${URL_DAILY_FORECAST}${cityName}&units=${units}&cnt=${count}&appid=${API_KEY}`
+    return fetch(url)
       .then(function(response) {
         return response.json();
       })
       .then(function(json) {
-        console.debug(`JSON for ${cityName}`, json);
+        return json;
       });
   }
 };

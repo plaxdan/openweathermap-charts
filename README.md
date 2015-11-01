@@ -2,6 +2,13 @@
 
 This project uses the [`fetch`](https://github.com/github/fetch) API to fetch weather data from openweathermap.org. In order to use their API you will need to register as a developer and obtain an API key.
 
+Once you have a key then you should add it to a file named `openweathermap.key.js` in the root of your project:
+
+```javascript
+// openweathermap.key.js
+module.exports = '<YOUR API KEY>';
+```
+
 This project is designed to be cloned or forked and used as a starting point for other projects. It provides the following build/development tools:
 
 - [npm](https://www.npmjs.com/) _for dependencies_
