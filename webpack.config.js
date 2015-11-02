@@ -27,6 +27,10 @@ module.exports = {
         query: {
           presets: ['es2015']
         }
+      },
+      {
+        test: /\.(eot|png|svg|ttf|woff)(\?v=[0-9]\.[0-9]\.[0-9])?$/,
+        loader: 'url-loader'
       }
     ]
   }

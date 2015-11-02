@@ -10,6 +10,7 @@ const API = () => {
   const CACHE = {};
 
   // The actual API object.
+  // TODO :build out this API. How would you make it more reusable and capable?
   return {
 
     /**

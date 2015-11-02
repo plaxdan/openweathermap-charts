@@ -1,8 +1,10 @@
 # Open Weather Map Charts
 
-This project uses the [`fetch`](https://github.com/github/fetch) API to fetch weather data from openweathermap.org. In order to use their API you will need to [register as a developer](http://home.openweathermap.org/) and obtain an API key.
+This project uses the [`fetch`](https://github.com/github/fetch) API to fetch weather data from openweathermap.org.
 
-Once you have a key then you should add it to a file named `openweathermap.key.js` in the root of your project:
+![image](https://cloud.githubusercontent.com/assets/382348/10910815/c234a9e8-81fe-11e5-968d-49c4467bd916.png)
+
+In order to use their API you will need to [register as a developer](http://home.openweathermap.org/) and obtain an API key. Once you have a key then you should add it to a file named `openweathermap.key.js` in the root of your project:
 
 ```javascript
 // openweathermap.key.js

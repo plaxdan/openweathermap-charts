@@ -22,6 +22,7 @@ module.exports = {
     } else {
       console.info(`Creating new chart for #${elementId}`);
       var chartOptions = {fullWidth: true};
+      // TODO make the charts prettier and more interactive.
       // TODO: allow users to choose whether they want bar, line, or some other
       // kind of chart.
       CHARTS_CACHE[elementId] = new Chartist.Line(`#${elementId}`, data, chartOptions);

@@ -21,12 +21,16 @@
     "del": "^2.0.2",
     "gulp": "^3.9.0",
     "gulp-util": "^3.0.7",
+    "leaflet": "^0.7.7",
     "style-loader": "^0.13.0",
     "webpack": "^1.12.2",
     "webpack-dev-server": "^1.12.1"
   },
   "dependencies": {
     "chartist": "^0.9.4",
+    "file-loader": "^0.8.4",
+    "leaflet-providers": "^1.1.5",
+    "url-loader": "^0.5.6",
     "whatwg-fetch": "^0.10.0"
   }
 }

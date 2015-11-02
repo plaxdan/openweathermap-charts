@@ -2,13 +2,15 @@ require('../css/style');
 
 // This is our custom weather API.
 var weather = require('./openweathermap');
-var chartist = require('./chartist.js');
+var chartist = require('./chartist');
+var map = require('./map')('map');
 
 // This is the <ul> list for cities.
 var cityList = document.getElementById('cityList');
 
 /**
- * Creates a DOM element with the given attributes
+ * Creates a DOM element with the given attributes.
+ *
  * @param {String} tagName - The tag of the HTML element to create.
  * @param {Object} attributes - An object containing the key/value pairs for
  *  the HTML elements attributes
@@ -24,6 +26,7 @@ var createElement = (tagName, attributes) => {
 
 /**
  * Clears the 'active' class from all the city buttons.
+ *
  * @return {undefined}
  */
 var clearActive = () => {
@@ -66,14 +69,23 @@ var temperatureChartData = (payload) => {
 }
 
 /**
+ * Converts weather payload to chart data then renders it to a chart.
+ *
  * @param {Object} payload -The Raw Open Weather Map data.
  * @return {undefined}
  */
 var visualizeTemperatures = (payload) => {
+  // TODO: perhaps display the current weather (Cloudy, Sunny etc).
+  // Display as text or perhaps as icons?
   console.debug('Raw data', payload);
   const chartData = temperatureChartData(payload)
   console.debug('Chart data', chartData);
   chartist.render('temps', chartData);
+};
+
+var visualizeMap = (payload) => {
+  var {lat, lon} = payload.city.coord;
+  map.setPosition(lat, lon);
 };
 
 var handleFetchError = (err) => {
@@ -92,11 +104,15 @@ var onClickCity = (clickEvent) => {
 
   // TODO: Allow the user to choose the number of days in the forecast
   const chosenCity = a.innerText;
-  var fetchCity = weather.dailyForecast(chosenCity, {count: 10});
+  const numberOfDays = 10; // 10-day forecast
+  var fetchCity = weather.dailyForecast(chosenCity, {count: numberOfDays});
   fetchCity.catch(handleFetchError);
 
-  // TODO: Add other visualizers to this chain or add more
-  // detail to the charts.
+  fetchCity
+    .then(visualizeMap)
+    .catch((err) => console.error('Error rendering map', err));
+
+  // TODO: Add more charts and graphics based on the data.
   fetchCity
     .then(visualizeTemperatures)
     .catch(handleVisualizationError);
@@ -124,7 +140,7 @@ var initializeCities = (cities) => {
  */
 var run = () => {
   // TODO: Allow the user to add/remove cities themselves.
-  var cities = ['Philadelphia', 'Denver', 'London', 'Tokyo', 'Shanghai', 'Phoenix', 'Malibu'];
+  var cities = ['Boston', 'Philadelphia', 'Denver', 'London', 'Tokyo', 'Shanghai', 'Phoenix', 'Malibu'];
 
   // TODO: Try initializing the currently selected city list
   // from the window.location.hash value. Make the forward/backward browser
