@@ -1,6 +1,6 @@
 # Open Weather Map Charts
 
-This project uses the [`fetch`](https://github.com/github/fetch) API to fetch weather data from openweathermap.org. In order to use their API you will need to register as a developer and obtain an API key.
+This project uses the [`fetch`](https://github.com/github/fetch) API to fetch weather data from openweathermap.org. In order to use their API you will need to [register as a developer](http://home.openweathermap.org/) and obtain an API key.
 
 Once you have a key then you should add it to a file named `openweathermap.key.js` in the root of your project:
 
@@ -8,12 +8,6 @@ Once you have a key then you should add it to a file named `openweathermap.key.j
 // openweathermap.key.js
 module.exports = '<YOUR API KEY>';
 ```
-
-This project is designed to be cloned or forked and used as a starting point for other projects. It provides the following build/development tools:
-
-- [npm](https://www.npmjs.com/) _for dependencies_
-- [webpack](http://webpack.github.io/) _for module loading and bundling_
-- [gulp](http://gulpjs.com/) _for build tasks_
 
 This project assumes you have [NodeJS](https://nodejs.org).
 

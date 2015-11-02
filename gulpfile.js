@@ -14,15 +14,13 @@ var BUILD_PATH = './build';
  * depending on whether or not the --produciton flag was
  * passed to gulp.
  */
-var getWebpackConfig = function() {
+var getWebpackConfig = () => {
   var config = webpackConfig;
   if (gulpUtil.env.production) {
     // Minify JavaScript for production
     config.plugins = config.plugins || [];
     config.plugins.push(new webpack.optimize.UglifyJsPlugin({
-      compress: {
-        warnings: false
-      }
+      compress: { warnings: false }
     }));
   } else {
     // Use source-maps for development
@@ -34,23 +32,23 @@ var getWebpackConfig = function() {
 /**
  * Deletes the contents of the build directory.
  */
-gulp.task('clean', function() {
+gulp.task('clean', () => {
   del(BUILD_PATH);
 });
 
 /**
  * Build the JS file (minified if the --production flag is present) and
- * copies it and the index.hml to either build or dist.
+ * copies it and the index.hml to build.
  */
-gulp.task('build', function(callback) {
+gulp.task('build', (callback) => {
   gulp.src(`${APP_PATH}/index.html`)
     .pipe(gulp.dest(BUILD_PATH));
-  webpack(getWebpackConfig(), function(err, stats) {
+  webpack(getWebpackConfig(), (err, stats) => {
     callback(err);
   });
 });
 
-gulp.task('start', function() {
+gulp.task('start', () => {
   var config = getWebpackConfig();
   config.entry.app.unshift('webpack-dev-server/client?http://localhost:8080');
   var server = new WebpackDevServer(webpack(config), {
